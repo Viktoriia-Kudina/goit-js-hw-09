@@ -1,45 +1,37 @@
-let formData = { email: '', message: '' };
-
-const formEl = document.querySelector('.feedback-form');
-const localStorageKey = 'feedback-form-state';
-
-loadForm();
-
-formEl.addEventListener('input', onSaveFormInput);
-
-formEl.addEventListener('submit', onFormSubmit);
-
-function onSaveFormInput(event) {
-  formData = JSON.parse(localStorage.getItem(localStorageKey)) || {};
-
-  formData[event.target.name] = event.target.value;
-
-  localStorage.setItem(localStorageKey, JSON.stringify(formData));
+const formData = {
+  email: '',
+  message: '',
+};
+const feedbackFormState = JSON.parse(
+  localStorage.getItem('feedback-form-state')
+);
+if (feedbackFormState) {
+  Object.assign(formData, feedbackFormState);
 }
 
-function onFormSubmit(event) {
+const feedbackForm = document.querySelector('.feedback-form');
+feedbackForm.elements.email.value = formData.email;
+feedbackForm.elements.message.value = formData.message;
+
+feedbackForm.addEventListener('input', event => {
+  if (event.target.nodeName === 'INPUT') {
+    formData.email = feedbackForm.elements.email.value;
+  } else if (event.target.nodeName === 'TEXTAREA') {
+    formData.message = feedbackForm.elements.message.value;
+  }
+  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+});
+
+feedbackForm.addEventListener('submit', event => {
   event.preventDefault();
-  if (!event.target.email.value.trim() || !event.target.message.value.trim()) {
+  if (formData.email && formData.message) {
+    console.table(formData);
+    feedbackForm.reset();
+    localStorage.removeItem('feedback-form-state');
+    formData.email = '';
+    formData.message = '';
+  } else {
     alert('Fill please all fields');
-    return;
   }
-
-  event.target.reset();
-  console.log(formData);
-  localStorage.removeItem(localStorageKey);
-}
-
-function loadForm() {
-  try {
-    let formLoad = JSON.parse(localStorage.getItem(localStorageKey));
-    if (!formLoad) {
-      return;
-    }
-
-    formData = formLoad;
-    formEl.email.value = formData.email || '';
-    formEl.message.value = formData.message || '';
-  } catch (error) {
-    console.error('Error.message ', error.message);
-  }
-}
+  console.table(formData);
+});
