@@ -65,31 +65,24 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
-const galleryHTML = document.querySelector('.gallery');
-let markup = ``;
-for (const img of images) {
-  markup += `<li class="gallery-item">
-  <a class="gallery-link" href="${img.original}">
-    <img
-      class="gallery-image"
-      src="${img.preview}"
-      data-source="${img.original}"
-      alt="${img.description}"
-    />
-  </a>
-</li>`;
-}
-galleryHTML.innerHTML = markup;
 
-const galleryOption = {
+const galleryRoot = document.querySelector('.gallery');
+
+const markup = images
+  .map(
+    ({ preview, original, description }) => `
+  <li class="gallery-item">
+    <a class="gallery-link" href="${original}">
+      <img class="gallery-image" src="${preview}" alt="${description}" />
+    </a>
+  </li>`
+  )
+  .join('');
+
+galleryRoot.innerHTML = markup;
+
+new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
+  captionPosition: 'bottom',
   captionDelay: 250,
-};
-let gallery = new SimpleLightbox('.gallery a', galleryOption);
-gallery.on('show.simplelightbox', function () {
-  // Do something…
-});
-
-gallery.on('error.simplelightbox', function (e) {
-  console.log(e); // Some usefull information
 });

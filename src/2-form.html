@@ -2,25 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form</title>
-    <link rel="stylesheet" href="./css/form.css" />
+    <title>Task 2 — Feedback Form</title>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
-
   <body>
-    <p><a href="./index.html">Go back</a></p>
-    <form class="feedback-form" autocomplete="off">
-      <label>
-        Email
-        <input type="email" name="email" autofocus />
-      </label>
-      <label>
-        Message
-        <textarea name="message" rows="8"></textarea>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
-    <script src="./js/2-form.js" type="module"></script>
+    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+
+    <main class="container">
+      <form class="feedback-form" autocomplete="off">
+        <label>
+          Email
+          <input type="email" name="email" autofocus />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="8"></textarea>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script type="module" src="/src/js/2-form.js"></script>
   </body>
 </html>
