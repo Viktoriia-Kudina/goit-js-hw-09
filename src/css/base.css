@@ -1,49 +1,73 @@
-:root {
-  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 400;
+.badges-list {
+  :root {
+    /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+    color: #242424;
+    background-color: rgba(255, 255, 255, 0.87);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: 0;
-  padding: 8px;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+  }
 
-main {
-  flex-grow: 1;
-}
+  main {
+    flex-grow: 1;
+  }
+  main:has(.back-link) {
+    text-align: center;
+  }
 
-main:has(.back-link) {
-  text-align: center;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-.main-wrapper {
-  width: fit-content;
-}
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
 
-.main-item {
-  margin-top: 8px;
-  border-radius: 15%;
-  border: 2px solid mediumaquamarine;
-}
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.main-link {
-  display: block;
-  padding: 8px;
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .back-link {
+    margin-bottom: 16px;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }
