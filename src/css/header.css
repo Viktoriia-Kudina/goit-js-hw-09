@@ -46,3 +46,8 @@
   color: #747bff;
   font-weight: 600;
 }
+.nav-logo-icon,
+.nav-logo img {
+  display: block;
+  height: auto;
+}
