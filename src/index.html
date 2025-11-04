@@ -18,14 +18,10 @@
           </a> -->
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="nav-link {=$highlight-act}" href="./1-gallery.html"
-                >Gallery</a
-              >
+              <a class="nav-link" href="./1-gallery.html">Gallery</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {=$highlight-curr}" href="./2-form.html"
-                >Form</a
-              >
+              <a class="nav-link" href="./2-form.html">Form</a>
             </li>
           </ul>
         </nav>
@@ -33,5 +29,14 @@
     </header>
 
     <main></main>
+
+    <script>
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === `./${currentPage}`) {
+          link.classList.add('active');
+        }
+      });
+    </script>
   </body>
 </html>
